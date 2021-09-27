@@ -19,4 +19,20 @@ class ControladorSesion
             return [true, "Usuario autenticado correctamente"];
         }
     }
+
+    public function create($nombre_usuario, $nombre, $apellido, $clave)
+    {
+        $repo = new RepositorioUsuario();
+        $usuario = new Usuario($nombre_usuario, $nombre, $apellido);
+        $id = $repo->save($usuario, $clave);
+        if ($id === false) {
+            return [ false, "Error al crear el usuario"];
+        }
+        else {
+            $usuario->setId($id);
+            session_start();
+            $_SESSION['usuario'] = serialize($usuario);
+            return [ true, "Usuario creado correctamente" ];
+        }
+    }
 }
