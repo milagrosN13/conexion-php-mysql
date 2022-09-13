@@ -6,14 +6,12 @@ if (isset($_POST['usuario']) && isset($_POST['clave'])) {
                           $_POST['apellido'], $_POST['clave']);
     if( $result[0] === true ) {
         $redirigir = 'home.php?mensaje='.$result[1];
-    }
-    else {
+    } else {
         $redirigir = 'create.php?mensaje='.$result[1];
     }
     header('Location: ' . $redirigir);
 }
-?>
-<!DOCTYPE html> 
+?><!DOCTYPE html> 
 <html>
     <head>
         <meta charset="utf-8">

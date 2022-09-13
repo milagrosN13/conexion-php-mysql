@@ -1,7 +1,7 @@
 <?php
 require_once 'clases/ControladorSesion.php';
 
-if (! isset($_POST['usuario']) || ! isset($_POST['clave'])) {
+if (empty($_POST['usuario']) || empty($_POST['clave'])) {
     $redirigir = 'index.php?mensaje=Error: Falta un campo obligatorio';
 } else {
     $cs = new ControladorSesion();
