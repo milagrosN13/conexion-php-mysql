@@ -4,6 +4,7 @@ session_start();
 if (isset($_SESSION['usuario'])) {
     $usuario = unserialize($_SESSION['usuario']);
     $nomApe = $usuario->getNombreApellido();
+    $email = $usuario->getEmail();
 } else {
     header('Location: index.php');
 }
@@ -21,7 +22,9 @@ if (isset($_SESSION['usuario'])) {
       <h1>Sistema bancario</h1>
       </div>    
       <div class="text-center">
-        <h3>Hola <?php echo $nomApe;?></h3>
+        <h3>Hola <?php echo $nomApe;?> </h3>
+        <p>su mail es: <?php echo $email;?><p>
+        <a href="modificar_email.php">modificar email</a>
         <p><a href="logout.php">Cerrar sesión</a></p>
       </div> 
     </body>
